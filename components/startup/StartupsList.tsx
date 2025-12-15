@@ -39,6 +39,7 @@ function formatCurrency(amount: number | null): string {
   }
 }
 
+
 function truncateText(text: string | null, maxLength: number = 150): string {
   if (!text) return "No description available";
   if (text.length <= maxLength) return text;
