@@ -9,35 +9,16 @@ import type { StartupFormData } from '@/lib/types/startup';
  * @param formData - The startup form data
  */
 export async function createStartupProfile(formData: StartupFormData) {
-  console.log('[createStartupProfile] Function called');
-  console.log('[createStartupProfile] Form data received:', {
-    name: formData.name,
-    industry: formData.industry,
-    business_type: formData.business_type,
-    founders_count: formData.founders.length,
-  });
-
   const supabase = await createClient();
-  console.log('[createStartupProfile] Supabase client created');
 
   // Get the current user
   const { data: { user }, error: userError } = await supabase.auth.getUser();
-  console.log('[createStartupProfile] User check:', {
-    hasUser: !!user,
-    userId: user?.id,
-    userError: userError ? {
-      message: userError.message,
-      status: userError.status,
-    } : null,
-  });
 
   if (userError || !user) {
-    console.error('[createStartupProfile] User authentication failed:', userError);
     throw new Error('You must be logged in to create a startup profile');
   }
 
   // Check if user already has a startup profile
-  console.log('[createStartupProfile] Checking for existing startup profile...');
   const { data: existingStartup, error: checkError } = await supabase
       .schema('api')
       .from('startup')
@@ -45,32 +26,19 @@ export async function createStartupProfile(formData: StartupFormData) {
     .eq('user_id', user.id)
     .maybeSingle();
 
-  console.log('[createStartupProfile] Existing startup check result:', {
-    existingStartup,
-    checkError: checkError ? {
-      code: checkError.code,
-      message: checkError.message,
-      details: checkError.details,
-      hint: checkError.hint,
-    } : null,
-  });
-
   // PGRST116 means no rows found - that's fine, continue
   // PGRST106 means table doesn't exist - we'll let the insert handle that error
   if (checkError && checkError.code !== 'PGRST116' && checkError.code !== 'PGRST106') {
-    console.error('[createStartupProfile] Error checking existing startup:', checkError);
     throw new Error(`Failed to check existing profile: ${checkError.message}`);
   }
 
   // If table doesn't exist (PGRST106), existingStartup will be null, which is fine
   // We'll proceed and let the insert throw a clear error about missing table
   if (existingStartup) {
-    console.log('[createStartupProfile] User already has a startup profile');
     throw new Error('You already have a startup profile. Please update it instead.');
   }
 
   // Prepare the data for insertion
-  console.log('[createStartupProfile] Preparing data for insertion...');
   const startupData = {
     user_id: user.id,
     name: formData.name.trim(),
@@ -96,18 +64,6 @@ export async function createStartupProfile(formData: StartupFormData) {
     })),
   };
 
-  console.log('[createStartupProfile] Prepared startup data:', {
-    user_id: startupData.user_id,
-    name: startupData.name,
-    industry: startupData.industry,
-    business_type: startupData.business_type,
-    stage: startupData.stage,
-    founders_count: startupData.founders.length,
-    has_revenue: !!startupData.revenue,
-    has_valuation: !!startupData.current_valuation,
-  });
-
-  console.log('[createStartupProfile] Attempting to insert into startup table...');
   const { data, error } = await supabase
       .schema('api')
       .from('startup')
@@ -115,35 +71,9 @@ export async function createStartupProfile(formData: StartupFormData) {
     .select()
     .single();
 
-  console.log('[createStartupProfile] Insert result:', {
-    hasData: !!data,
-    dataId: data?.id,
-    error: error ? {
-      code: error.code,
-      message: error.message,
-      details: error.details,
-      hint: error.hint,
-      fullError: JSON.stringify(error, Object.getOwnPropertyNames(error)),
-    } : null,
-  });
-
   if (error) {
-    console.error('[createStartupProfile] Error creating startup profile:', {
-      code: error.code,
-      message: error.message,
-      details: error.details,
-      hint: error.hint,
-      error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
-      supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
-    });
-    
     // PGRST106 means the table/schema doesn't exist - likely migrations haven't been run
     if (error.code === 'PGRST106') {
-      console.error('[createStartupProfile] PGRST106 Error - Table/schema not found. Details:', {
-        errorMessage: error.message,
-        supabaseUrl: process.env.NEXT_PUBLIC_SUPABASE_URL,
-        suggestion: 'Check if table exists in api schema and has proper permissions',
-      });
       throw new Error(
         'The startup table does not exist. Please ensure you have run the database migrations. ' +
         'Error: ' + (error.message || 'Schema not found')
@@ -154,11 +84,6 @@ export async function createStartupProfile(formData: StartupFormData) {
     throw new Error(`Failed to create startup profile: ${errorMessage}`);
   }
 
-  console.log('[createStartupProfile] Successfully created startup profile:', {
-    id: data?.id,
-    name: data?.name,
-  });
-
   return data;
 }
 
@@ -166,23 +91,15 @@ export async function createStartupProfile(formData: StartupFormData) {
  * Gets the startup profile for the current user
  */
 export async function getStartupProfile() {
-  console.log('[getStartupProfile] Function called');
   const supabase = await createClient();
 
   // Get the current user
   const { data: { user }, error: userError } = await supabase.auth.getUser();
-  console.log('[getStartupProfile] User check:', {
-    hasUser: !!user,
-    userId: user?.id,
-    userError: userError ? { message: userError.message } : null,
-  });
 
   if (userError || !user) {
-    console.error('[getStartupProfile] User authentication failed:', userError);
     throw new Error('You must be logged in to view your startup profile');
   }
 
-  console.log('[getStartupProfile] Fetching startup profile for user:', user.id);
   const { data, error } = await supabase
       .schema('api')
       .from('startup')
@@ -190,21 +107,9 @@ export async function getStartupProfile() {
     .eq('user_id', user.id)
     .maybeSingle();
 
-  console.log('[getStartupProfile] Fetch result:', {
-    hasData: !!data,
-    dataId: data?.id,
-    error: error ? {
-      code: error.code,
-      message: error.message,
-      details: error.details,
-      hint: error.hint,
-    } : null,
-  });
-
   if (error) {
     // PGRST106 means table doesn't exist - migrations haven't been run
     if (error.code === 'PGRST106') {
-      console.error('[getStartupProfile] PGRST106 Error - Table/schema not found');
       throw new Error(
         'The startup table does not exist. Please ensure you have run the database migrations. ' +
         'Error: ' + (error.message || 'Schema not found')
@@ -213,24 +118,14 @@ export async function getStartupProfile() {
 
     // PGRST116 means no rows found - that's fine, return null
     if (error.code === 'PGRST116') {
-      console.log('[getStartupProfile] No startup profile found (PGRST116)');
       return null;
     }
 
-    console.error('[getStartupProfile] Error fetching startup profile:', {
-      code: error.code,
-      message: error.message,
-      details: error.details,
-      hint: error.hint,
-      error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
-    });
-    
     const errorMessage = error.message || error.details || error.hint || JSON.stringify(error) || 'Unknown error occurred';
     throw new Error(`Failed to fetch startup profile: ${errorMessage}`);
   }
 
   // maybeSingle returns null if no rows found, which is what we want
-  console.log('[getStartupProfile] Successfully fetched startup profile');
   return data;
 }
 
@@ -238,49 +133,27 @@ export async function getStartupProfile() {
  * Gets all startups (public access)
  */
 export async function getAllStartups() {
-  console.log('[getAllStartups] Function called');
   const supabase = await createClient();
 
-  console.log('[getAllStartups] Fetching all startups...');
   const { data, error } = await supabase
     .schema('api')
     .from('startup')
     .select('id, name, industry, business_type, stage, description, product_is_live, current_valuation, ask_value, created_at')
     .order('created_at', { ascending: false });
 
-  console.log('[getAllStartups] Fetch result:', {
-    count: data?.length || 0,
-    error: error ? {
-      code: error.code,
-      message: error.message,
-      details: error.details,
-      hint: error.hint,
-    } : null,
-  });
-
   if (error) {
     // PGRST106 means table doesn't exist - migrations haven't been run
     if (error.code === 'PGRST106') {
-      console.error('[getAllStartups] PGRST106 Error - Table/schema not found');
       throw new Error(
         'The startup table does not exist. Please ensure you have run the database migrations. ' +
         'Error: ' + (error.message || 'Schema not found')
       );
     }
 
-    console.error('[getAllStartups] Error fetching startups:', {
-      code: error.code,
-      message: error.message,
-      details: error.details,
-      hint: error.hint,
-      error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
-    });
-    
     const errorMessage = error.message || error.details || error.hint || JSON.stringify(error) || 'Unknown error occurred';
     throw new Error(`Failed to fetch startups: ${errorMessage}`);
   }
 
-  console.log('[getAllStartups] Successfully fetched startups');
   return data || [];
 }
 
@@ -288,10 +161,8 @@ export async function getAllStartups() {
  * Gets a startup by ID (public access)
  */
 export async function getStartupById(id: string) {
-  console.log('[getStartupById] Function called with id:', id);
   const supabase = await createClient();
 
-  console.log('[getStartupById] Fetching startup with id:', id);
   const { data, error } = await supabase
     .schema('api')
     .from('startup')
@@ -299,21 +170,9 @@ export async function getStartupById(id: string) {
     .eq('id', id)
     .maybeSingle();
 
-  console.log('[getStartupById] Fetch result:', {
-    hasData: !!data,
-    dataId: data?.id,
-    error: error ? {
-      code: error.code,
-      message: error.message,
-      details: error.details,
-      hint: error.hint,
-    } : null,
-  });
-
   if (error) {
     // PGRST106 means table doesn't exist - migrations haven't been run
     if (error.code === 'PGRST106') {
-      console.error('[getStartupById] PGRST106 Error - Table/schema not found');
       throw new Error(
         'The startup table does not exist. Please ensure you have run the database migrations. ' +
         'Error: ' + (error.message || 'Schema not found')
@@ -322,24 +181,14 @@ export async function getStartupById(id: string) {
 
     // PGRST116 means no rows found - that's fine, return null
     if (error.code === 'PGRST116') {
-      console.log('[getStartupById] No startup found (PGRST116)');
       return null;
     }
 
-    console.error('[getStartupById] Error fetching startup:', {
-      code: error.code,
-      message: error.message,
-      details: error.details,
-      hint: error.hint,
-      error: JSON.stringify(error, Object.getOwnPropertyNames(error)),
-    });
-    
     const errorMessage = error.message || error.details || error.hint || JSON.stringify(error) || 'Unknown error occurred';
     throw new Error(`Failed to fetch startup: ${errorMessage}`);
   }
 
   // maybeSingle returns null if no rows found, which is what we want
-  console.log('[getStartupById] Successfully fetched startup');
   return data;
 }
 

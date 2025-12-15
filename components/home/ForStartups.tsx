@@ -56,7 +56,7 @@ export function ForStartups() {
   }, []);
 
   return (
-    <section id="for-startups" className="py-32 bg-black text-white">
+    <section id="for-startups" className="py-32 bg-black dark:bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div
@@ -64,13 +64,13 @@ export function ForStartups() {
               mounted ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
             }`}
           >
-            <div className="inline-block px-4 py-2 bg-orange-600/20 border border-orange-600 rounded-full text-orange-400 text-sm font-medium">
+            <div className="inline-block px-4 py-2 bg-orange-600/20 dark:bg-orange-500/20 border border-orange-600 dark:border-orange-500 rounded-full text-orange-400 dark:text-orange-300 text-sm font-medium">
               For Startups
             </div>
             <h2 className="text-4xl md:text-5xl font-bold">
               Launch Your Startup to Success
             </h2>
-            <p className="text-xl text-gray-300 leading-relaxed">
+            <p className="text-xl text-gray-300 dark:text-gray-400 leading-relaxed">
               Join hundreds of startups that have successfully connected with
               investors through our platform. Showcase your innovation and
               accelerate your fundraising journey.
@@ -79,7 +79,7 @@ export function ForStartups() {
               <Link href="/auth/sign-up">
                 <Button
                   size="lg"
-                  className="bg-orange-600 hover:bg-orange-700 text-white text-lg px-8 py-6 rounded-lg"
+                  className="bg-orange-600 hover:bg-orange-700 dark:bg-orange-600 dark:hover:bg-orange-700 text-white text-lg px-8 py-6 rounded-lg"
                 >
                   Create Startup Profile
                 </Button>
@@ -91,7 +91,7 @@ export function ForStartups() {
             {features.map((feature, index) => (
               <div
                 key={index}
-                className={`bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-orange-600 transition-all duration-300 ${
+                className={`bg-gray-900 dark:bg-gray-800 border border-gray-800 dark:border-gray-700 rounded-lg p-6 hover:border-orange-600 dark:hover:border-orange-500 transition-all duration-300 ${
                   mounted
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-10"
@@ -100,11 +100,11 @@ export function ForStartups() {
                   transitionDelay: `${index * 100}ms`,
                 }}
               >
-                <div className="w-12 h-12 bg-orange-600/20 rounded-lg flex items-center justify-center mb-4 text-white">
+                <div className="w-12 h-12 bg-orange-600/20 dark:bg-orange-500/20 rounded-lg flex items-center justify-center mb-4 text-white dark:text-orange-300">
                   {feature.icon}
                 </div>
                 <h3 className="text-lg font-bold mb-2">{feature.title}</h3>
-                <p className="text-gray-400 text-sm">{feature.description}</p>
+                <p className="text-gray-400 dark:text-gray-300 text-sm">{feature.description}</p>
               </div>
             ))}
           </div>

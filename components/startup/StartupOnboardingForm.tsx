@@ -271,7 +271,7 @@ export function StartupOnboardingForm() {
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="name" className="text-black font-medium">
+          <Label htmlFor="name" className="text-black dark:text-white font-medium">
             Startup Name <span className="text-red-500">*</span>
           </Label>
           <Input
@@ -279,15 +279,15 @@ export function StartupOnboardingForm() {
             value={formData.name}
             onChange={(e) => updateFormData("name", e.target.value)}
             placeholder="Your Startup Name"
-            className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+            className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
           />
           {errors.name && (
-            <p className="text-sm text-red-600">{errors.name}</p>
+            <p className="text-sm text-red-600 dark:text-red-400">{errors.name}</p>
           )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="date_of_incorporation" className="text-black font-medium">
+          <Label htmlFor="date_of_incorporation" className="text-black dark:text-white font-medium">
             Date of Incorporation
           </Label>
           <Input
@@ -295,15 +295,15 @@ export function StartupOnboardingForm() {
             type="date"
             value={formData.date_of_incorporation}
             onChange={(e) => updateFormData("date_of_incorporation", e.target.value)}
-            className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+            className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
           />
           {errors.date_of_incorporation && (
-            <p className="text-sm text-red-600">{errors.date_of_incorporation}</p>
+            <p className="text-sm text-red-600 dark:text-red-400">{errors.date_of_incorporation}</p>
           )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="registration_id" className="text-black font-medium">
+          <Label htmlFor="registration_id" className="text-black dark:text-white font-medium">
             Registration ID
           </Label>
           <Input
@@ -311,15 +311,15 @@ export function StartupOnboardingForm() {
             value={formData.registration_id}
             onChange={(e) => updateFormData("registration_id", e.target.value)}
             placeholder="Company Registration Number"
-            className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+            className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
           />
           {errors.registration_id && (
-            <p className="text-sm text-red-600">{errors.registration_id}</p>
+            <p className="text-sm text-red-600 dark:text-red-400">{errors.registration_id}</p>
           )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="gst_no" className="text-black font-medium">
+          <Label htmlFor="gst_no" className="text-black dark:text-white font-medium">
             GST No.
           </Label>
           <Input
@@ -327,15 +327,15 @@ export function StartupOnboardingForm() {
             value={formData.gst_no}
             onChange={(e) => updateFormData("gst_no", e.target.value.toUpperCase())}
             placeholder="15-digit GST Number"
-            className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+            className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
           />
           {errors.gst_no && (
-            <p className="text-sm text-red-600">{errors.gst_no}</p>
+            <p className="text-sm text-red-600 dark:text-red-400">{errors.gst_no}</p>
           )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="business_pan_number" className="text-black font-medium">
+          <Label htmlFor="business_pan_number" className="text-black dark:text-white font-medium">
             Business PAN Number
           </Label>
           <Input
@@ -343,15 +343,15 @@ export function StartupOnboardingForm() {
             value={formData.business_pan_number}
             onChange={(e) => updateFormData("business_pan_number", e.target.value.toUpperCase())}
             placeholder="ABCDE1234F"
-            className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+            className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
           />
           {errors.business_pan_number && (
-            <p className="text-sm text-red-600">{errors.business_pan_number}</p>
+            <p className="text-sm text-red-600 dark:text-red-400">{errors.business_pan_number}</p>
           )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="industry" className="text-black font-medium">
+          <Label htmlFor="industry" className="text-black dark:text-white font-medium">
             Industry <span className="text-red-500">*</span>
           </Label>
           <Input
@@ -359,22 +359,22 @@ export function StartupOnboardingForm() {
             value={formData.industry}
             onChange={(e) => updateFormData("industry", e.target.value)}
             placeholder="e.g., Technology, Healthcare, Finance"
-            className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+            className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
           />
           {errors.industry && (
-            <p className="text-sm text-red-600">{errors.industry}</p>
+            <p className="text-sm text-red-600 dark:text-red-400">{errors.industry}</p>
           )}
         </div>
 
         <div className="space-y-2 md:col-span-2">
-          <Label htmlFor="business_type" className="text-black font-medium">
+          <Label htmlFor="business_type" className="text-black dark:text-white font-medium">
             Business Type <span className="text-red-500">*</span>
           </Label>
           <Select
             value={formData.business_type}
             onValueChange={(value) => updateFormData("business_type", value)}
           >
-            <SelectTrigger className="border-gray-300 focus:border-orange-600 focus:ring-orange-600">
+            <SelectTrigger className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500">
               <SelectValue placeholder="Select business type" />
             </SelectTrigger>
             <SelectContent>
@@ -391,7 +391,7 @@ export function StartupOnboardingForm() {
         </div>
 
         <div className="space-y-2 md:col-span-2">
-          <Label htmlFor="description" className="text-black font-medium">
+          <Label htmlFor="description" className="text-black dark:text-white font-medium">
             Description <span className="text-red-500">*</span>
           </Label>
           <Textarea
@@ -400,12 +400,12 @@ export function StartupOnboardingForm() {
             onChange={(e) => updateFormData("description", e.target.value)}
             placeholder="Describe your startup, its mission, and what makes it unique (minimum 50 characters)"
             rows={5}
-            className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+            className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
           />
           {errors.description && (
-            <p className="text-sm text-red-600">{errors.description}</p>
+            <p className="text-sm text-red-600 dark:text-red-400">{errors.description}</p>
           )}
-          <p className="text-xs text-gray-500">
+          <p className="text-xs text-gray-500 dark:text-gray-400">
             {formData.description.length} characters
           </p>
         </div>
@@ -417,7 +417,7 @@ export function StartupOnboardingForm() {
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div className="space-y-2">
-          <Label htmlFor="revenue" className="text-black font-medium">
+          <Label htmlFor="revenue" className="text-black dark:text-white font-medium">
             Revenue (₹)
           </Label>
           <Input
@@ -428,22 +428,22 @@ export function StartupOnboardingForm() {
             value={formData.revenue}
             onChange={(e) => updateFormData("revenue", e.target.value)}
             placeholder="0.00"
-            className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+            className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
           />
           {errors.revenue && (
-            <p className="text-sm text-red-600">{errors.revenue}</p>
+            <p className="text-sm text-red-600 dark:text-red-400">{errors.revenue}</p>
           )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="stage" className="text-black font-medium">
+          <Label htmlFor="stage" className="text-black dark:text-white font-medium">
             Business Stage <span className="text-red-500">*</span>
           </Label>
           <Select
             value={formData.stage}
             onValueChange={(value) => updateFormData("stage", value)}
           >
-            <SelectTrigger className="border-gray-300 focus:border-orange-600 focus:ring-orange-600">
+            <SelectTrigger className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500">
               <SelectValue placeholder="Select stage" />
             </SelectTrigger>
             <SelectContent>
@@ -460,7 +460,7 @@ export function StartupOnboardingForm() {
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="investment_raised" className="text-black font-medium">
+          <Label htmlFor="investment_raised" className="text-black dark:text-white font-medium">
             Investment Raised (₹)
           </Label>
           <Input
@@ -471,15 +471,15 @@ export function StartupOnboardingForm() {
             value={formData.investment_raised}
             onChange={(e) => updateFormData("investment_raised", e.target.value)}
             placeholder="0.00"
-            className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+            className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
           />
           {errors.investment_raised && (
-            <p className="text-sm text-red-600">{errors.investment_raised}</p>
+            <p className="text-sm text-red-600 dark:text-red-400">{errors.investment_raised}</p>
           )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="current_valuation" className="text-black font-medium">
+          <Label htmlFor="current_valuation" className="text-black dark:text-white font-medium">
             Current Valuation (₹)
           </Label>
           <Input
@@ -490,15 +490,15 @@ export function StartupOnboardingForm() {
             value={formData.current_valuation}
             onChange={(e) => updateFormData("current_valuation", e.target.value)}
             placeholder="0.00"
-            className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+            className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
           />
           {errors.current_valuation && (
-            <p className="text-sm text-red-600">{errors.current_valuation}</p>
+            <p className="text-sm text-red-600 dark:text-red-400">{errors.current_valuation}</p>
           )}
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="ask_value" className="text-black font-medium">
+          <Label htmlFor="ask_value" className="text-black dark:text-white font-medium">
             Ask Value (₹)
           </Label>
           <Input
@@ -509,10 +509,10 @@ export function StartupOnboardingForm() {
             value={formData.ask_value}
             onChange={(e) => updateFormData("ask_value", e.target.value)}
             placeholder="0.00"
-            className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+            className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
           />
           {errors.ask_value && (
-            <p className="text-sm text-red-600">{errors.ask_value}</p>
+            <p className="text-sm text-red-600 dark:text-red-400">{errors.ask_value}</p>
           )}
         </div>
 
@@ -524,11 +524,11 @@ export function StartupOnboardingForm() {
               onCheckedChange={(checked) =>
                 updateFormData("product_is_live", checked === true)
               }
-              className="border-gray-300 data-[state=checked]:bg-orange-600 data-[state=checked]:border-orange-600"
+              className="border-gray-300 dark:border-gray-600 data-[state=checked]:bg-orange-600 dark:data-[state=checked]:bg-orange-500 data-[state=checked]:border-orange-600 dark:data-[state=checked]:border-orange-500"
             />
             <Label
               htmlFor="product_is_live"
-              className="text-black font-medium cursor-pointer"
+              className="text-black dark:text-white font-medium cursor-pointer"
             >
               Product is Live
             </Label>
@@ -542,8 +542,8 @@ export function StartupOnboardingForm() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h3 className="text-lg font-semibold text-gray-800">Founders Information</h3>
-          <p className="text-sm text-gray-600 mt-1">
+          <h3 className="text-lg font-semibold text-gray-800 dark:text-white">Founders Information</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">
             Add details about all founders of your startup
           </p>
         </div>
@@ -551,7 +551,7 @@ export function StartupOnboardingForm() {
           type="button"
           variant="outline"
           onClick={handleAddFounder}
-          className="border-orange-600 text-orange-600 hover:bg-orange-50"
+          className="border-orange-600 dark:border-orange-400 text-orange-600 dark:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-900/20"
         >
           <Plus className="w-4 h-4 mr-2" />
           Add Founder
@@ -579,22 +579,22 @@ export function StartupOnboardingForm() {
       </div>
 
       {errors.founders && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-          <p className="text-sm text-red-600">{errors.founders}</p>
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3">
+          <p className="text-sm text-red-600 dark:text-red-400">{errors.founders}</p>
         </div>
       )}
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <Card className="border-2 border-gray-200 shadow-xl">
+        <Card className="border-2 border-gray-200 dark:border-gray-700 shadow-xl">
           <CardHeader className="space-y-2">
-            <CardTitle className="text-3xl font-bold text-black text-center">
+            <CardTitle className="text-3xl font-bold text-black dark:text-white text-center">
               Startup Onboarding
             </CardTitle>
-            <CardDescription className="text-gray-600 text-center">
+            <CardDescription className="text-gray-600 dark:text-gray-400 text-center">
               Complete your startup profile to connect with investors
             </CardDescription>
           </CardHeader>
@@ -612,18 +612,18 @@ export function StartupOnboardingForm() {
             </div>
 
             {errors.submit && (
-              <div className="mt-4 bg-red-50 border border-red-200 rounded-lg p-3">
-                <p className="text-sm text-red-600">{errors.submit}</p>
+              <div className="mt-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3">
+                <p className="text-sm text-red-600 dark:text-red-400">{errors.submit}</p>
               </div>
             )}
 
-            <div className="flex justify-between mt-8 pt-6 border-t border-gray-200">
+            <div className="flex justify-between mt-8 pt-6 border-t border-gray-200 dark:border-gray-700">
               <Button
                 type="button"
                 variant="outline"
                 onClick={handleBack}
                 disabled={currentStep === 1}
-                className="border-gray-300 text-gray-700 hover:bg-gray-50"
+                className="border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800"
               >
                 Back
               </Button>

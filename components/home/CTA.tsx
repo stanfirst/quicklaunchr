@@ -12,7 +12,7 @@ export function CTA() {
   }, []);
 
   return (
-    <section className="py-32 bg-gradient-to-br from-orange-600 to-orange-700 text-white relative overflow-hidden">
+    <section className="py-32 bg-gradient-to-br from-orange-600 to-orange-700 dark:from-orange-700 dark:to-orange-800 text-white relative overflow-hidden">
       {/* Background pattern */}
       <div className="absolute inset-0 opacity-10">
         <div
@@ -40,7 +40,7 @@ export function CTA() {
             <Link href="/auth/sign-up">
               <Button
                 size="lg"
-                className="bg-white text-orange-600 hover:bg-gray-100 text-lg px-8 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
+                className="bg-white dark:bg-gray-100 text-orange-600 dark:text-orange-700 hover:bg-gray-100 dark:hover:bg-gray-200 text-lg px-8 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
               >
                 Get Started Free
               </Button>
@@ -48,7 +48,7 @@ export function CTA() {
             <Link href="#how-it-works">
               <Button
                 size="lg"
-                className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-orange-600 text-lg px-8 py-6 rounded-lg transition-all shadow-lg"
+                className="bg-transparent border-2 border-white dark:border-gray-300 text-white dark:text-gray-100 hover:bg-white dark:hover:bg-gray-100 hover:text-orange-600 dark:hover:text-orange-700 text-lg px-8 py-6 rounded-lg transition-all shadow-lg"
               >
                 Learn More
               </Button>

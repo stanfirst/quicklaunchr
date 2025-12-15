@@ -55,14 +55,14 @@ export function ForInvestors() {
   }, []);
 
   return (
-    <section id="for-investors" className="py-32 bg-white">
+    <section id="for-investors" className="py-32 bg-white dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div className="grid grid-cols-2 gap-6 order-2 lg:order-1">
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className={`bg-gray-50 border border-gray-200 rounded-lg p-6 hover:border-orange-600 hover:shadow-lg transition-all duration-300 ${
+                className={`bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-6 hover:border-orange-600 dark:hover:border-orange-500 hover:shadow-lg transition-all duration-300 ${
                   mounted
                     ? "opacity-100 translate-y-0"
                     : "opacity-0 translate-y-10"
@@ -71,13 +71,13 @@ export function ForInvestors() {
                   transitionDelay: `${index * 100}ms`,
                 }}
               >
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mb-4 text-orange-600">
+                <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-4 text-orange-600 dark:text-orange-400">
                   {benefit.icon}
                 </div>
-                <h3 className="text-lg font-bold mb-2 text-black">
+                <h3 className="text-lg font-bold mb-2 text-black dark:text-white">
                   {benefit.title}
                 </h3>
-                <p className="text-gray-600 text-sm">{benefit.description}</p>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -87,13 +87,13 @@ export function ForInvestors() {
               mounted ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"
             }`}
           >
-            <div className="inline-block px-4 py-2 bg-orange-100 border border-orange-600 rounded-full text-orange-600 text-sm font-medium">
+            <div className="inline-block px-4 py-2 bg-orange-100 dark:bg-orange-900/30 border border-orange-600 dark:border-orange-500 rounded-full text-orange-600 dark:text-orange-400 text-sm font-medium">
               For Investors
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-black">
+            <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white">
               Discover Your Next Investment
             </h2>
-            <p className="text-xl text-gray-600 leading-relaxed">
+            <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed">
               Join a network of active investors discovering and funding the
               next generation of innovative startups. Find opportunities that
               align with your investment thesis.
@@ -102,7 +102,7 @@ export function ForInvestors() {
               <Link href="/auth/sign-up">
                 <Button
                   size="lg"
-                  className="bg-orange-600 hover:bg-orange-700 text-white text-lg px-8 py-6 rounded-lg"
+                  className="bg-orange-600 hover:bg-orange-700 dark:bg-orange-600 dark:hover:bg-orange-700 text-white text-lg px-8 py-6 rounded-lg"
                 >
                   Join as Investor
                 </Button>

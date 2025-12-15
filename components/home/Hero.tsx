@@ -46,11 +46,11 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-50 overflow-hidden pt-20">
+    <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 overflow-hidden pt-20">
       {/* Animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-100 rounded-full blur-3xl opacity-20 animate-pulse" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-200 rounded-full blur-3xl opacity-20 animate-pulse delay-1000" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-orange-100 dark:bg-orange-900/30 rounded-full blur-3xl opacity-20 animate-pulse" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-200 dark:bg-orange-800/30 rounded-full blur-3xl opacity-20 animate-pulse delay-1000" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-20">
@@ -62,13 +62,13 @@ export function Hero() {
             }`}
           >
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-black leading-tight">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-black dark:text-white leading-tight">
                 Connect Startups with
                 <br />
-                <span className="text-orange-600">Visionary Investors</span>
+                <span className="text-orange-600 dark:text-orange-400">Visionary Investors</span>
               </h1>
 
-              <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-xl">
+              <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 leading-relaxed max-w-xl">
                 The premier marketplace where innovative startups meet strategic
                 investors. Launch your venture or discover the next unicorn.
               </p>
@@ -78,14 +78,14 @@ export function Hero() {
               <Link href={startupLink}>
                 <Button
                   size="lg"
-                  className="bg-orange-600 hover:bg-orange-700 text-white text-lg px-8 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
+                  className="bg-orange-600 hover:bg-orange-700 dark:bg-orange-600 dark:hover:bg-orange-700 text-white text-lg px-8 py-6 rounded-lg shadow-lg hover:shadow-xl transition-all"
                 >
                   Start Your Journey
                 </Button>
               </Link>
               <Link href="#how-it-works">
                 <button
-                  className="border-2 border-black text-black hover:bg-black hover:text-white text-lg px-8 py-6 rounded-lg transition-all h-10 flex items-center justify-center"
+                  className="border-2 border-black dark:border-white text-black dark:text-white hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black text-lg px-8 py-6 rounded-lg transition-all h-10 flex items-center justify-center"
                 >
                   Learn More
                 </button>
@@ -93,17 +93,17 @@ export function Hero() {
             </div>
 
             {/* Trust indicators */}
-            <div className="flex flex-wrap items-center gap-6 pt-8 text-sm text-gray-500">
+            <div className="flex flex-wrap items-center gap-6 pt-8 text-sm text-gray-500 dark:text-gray-400">
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-orange-600 rounded-full"></div>
+                <div className="w-2 h-2 bg-orange-600 dark:bg-orange-400 rounded-full"></div>
                 <span>Trusted Platform</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-orange-600 rounded-full"></div>
+                <div className="w-2 h-2 bg-orange-600 dark:bg-orange-400 rounded-full"></div>
                 <span>Secure & Private</span>
               </div>
               <div className="flex items-center gap-2">
-                <div className="w-2 h-2 bg-orange-600 rounded-full"></div>
+                <div className="w-2 h-2 bg-orange-600 dark:bg-orange-400 rounded-full"></div>
                 <span>Free to Start</span>
               </div>
             </div>

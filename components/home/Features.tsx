@@ -74,13 +74,13 @@ export function Features() {
   }, []);
 
   return (
-    <section id="features" className="py-32 bg-gray-50">
+    <section id="features" className="py-32 bg-gray-50 dark:bg-gray-900">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-4">
             Powerful Features
           </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Everything you need to connect, engage, and close deals
           </p>
         </div>
@@ -89,7 +89,7 @@ export function Features() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`bg-white rounded-lg p-8 border border-gray-200 hover:border-orange-600 hover:shadow-xl transition-all duration-300 ${
+              className={`bg-white dark:bg-gray-800 rounded-lg p-8 border border-gray-200 dark:border-gray-700 hover:border-orange-600 dark:hover:border-orange-500 hover:shadow-xl transition-all duration-300 ${
                 mounted
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
@@ -98,13 +98,13 @@ export function Features() {
                 transitionDelay: `${index * 100}ms`,
               }}
             >
-              <div className="w-14 h-14 bg-orange-100 rounded-lg flex items-center justify-center mb-6 text-orange-600">
+              <div className="w-14 h-14 bg-orange-100 dark:bg-orange-900/30 rounded-lg flex items-center justify-center mb-6 text-orange-600 dark:text-orange-400">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold text-black mb-3">
+              <h3 className="text-xl font-bold text-black dark:text-white mb-3">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
                 {feature.description}
               </p>
             </div>

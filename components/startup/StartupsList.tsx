@@ -1,10 +1,12 @@
 import { getAllStartups } from "@/app/actions/startup";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { Building2, TrendingUp, Rocket, CheckCircle2, XCircle, ArrowRight } from "lucide-react";
+import { Building2, TrendingUp, Rocket, CheckCircle2, XCircle, ArrowRight, LogIn } from "lucide-react";
 import { unstable_noStore } from "next/cache";
 import { Suspense } from "react";
+import { createClient } from "@/lib/supabase/server";
 
 const BUSINESS_STAGE_LABELS: Record<string, string> = {
   idea: "Idea",
@@ -49,19 +51,41 @@ function truncateText(text: string | null, maxLength: number = 150): string {
 // Server Component - performs data fetching via server action
 async function StartupsListContent() {
   unstable_noStore(); // Mark this data fetch as uncached
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  
   const startups = await getAllStartups(); // Server action call
 
   return (
     <>
       {startups.length === 0 ? (
         <div className="text-center py-12">
-          <Building2 className="w-16 h-16 mx-auto text-gray-400 mb-4" />
-          <p className="text-xl text-gray-600 dark:text-gray-400">
-            No startups found yet
-          </p>
-          <p className="text-gray-500 dark:text-gray-500 mt-2">
-            Be the first to register your startup!
-          </p>
+          <Building2 className="w-16 h-16 mx-auto text-gray-400 dark:text-gray-500 mb-4" />
+          {!user ? (
+            <>
+              <p className="text-xl text-gray-600 dark:text-gray-400 mb-2">
+                Login to view startups
+              </p>
+              <p className="text-gray-500 dark:text-gray-500 mb-6">
+                Sign in to explore innovative startups looking for investment and partnerships
+              </p>
+              <Link href="/auth/login">
+                <Button className="bg-orange-600 hover:bg-orange-700 dark:bg-orange-600 dark:hover:bg-orange-700 text-white">
+                  <LogIn className="w-4 h-4 mr-2" />
+                  Sign In
+                </Button>
+              </Link>
+            </>
+          ) : (
+            <>
+              <p className="text-xl text-gray-600 dark:text-gray-400">
+                No startups found yet
+              </p>
+              <p className="text-gray-500 dark:text-gray-500 mt-2">
+                Be the first to register your startup!
+              </p>
+            </>
+          )}
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -71,7 +95,7 @@ async function StartupsListContent() {
               href={`/startups/${startup.id}`}
               className="block h-full"
             >
-              <Card className="h-full hover:shadow-lg transition-shadow duration-200 cursor-pointer border-2 hover:border-orange-500">
+              <Card className="h-full hover:shadow-lg transition-shadow duration-200 cursor-pointer border-2 border-gray-200 dark:border-gray-700 hover:border-orange-500 dark:hover:border-orange-500">
                 <CardHeader>
                   <div className="flex items-start justify-between mb-2">
                     <CardTitle className="text-xl font-bold text-gray-900 dark:text-white line-clamp-2">
@@ -80,19 +104,19 @@ async function StartupsListContent() {
                     <Building2 className="w-5 h-5 text-orange-600 flex-shrink-0 ml-2" />
                   </div>
                   <div className="flex flex-wrap gap-2 mb-2">
-                    <Badge variant="outline" className="text-orange-600 border-orange-600">
+                    <Badge variant="outline" className="text-orange-600 dark:text-orange-400 border-orange-600 dark:border-orange-400">
                       {BUSINESS_TYPE_LABELS[startup.business_type] || startup.business_type}
                     </Badge>
-                    <Badge variant="outline" className="text-gray-600 border-gray-600">
+                    <Badge variant="outline" className="text-gray-600 dark:text-gray-400 border-gray-600 dark:border-gray-400">
                       {BUSINESS_STAGE_LABELS[startup.stage] || startup.stage}
                     </Badge>
                     {startup.product_is_live ? (
-                      <Badge className="bg-green-600 text-white">
+                      <Badge className="bg-green-600 dark:bg-green-500 text-white">
                         <CheckCircle2 className="w-3 h-3 mr-1" />
                         Live
                       </Badge>
                     ) : (
-                      <Badge variant="outline" className="text-gray-500 border-gray-500">
+                      <Badge variant="outline" className="text-gray-500 dark:text-gray-400 border-gray-500 dark:border-gray-400">
                         <XCircle className="w-3 h-3 mr-1" />
                         Not Live
                       </Badge>
@@ -124,7 +148,7 @@ async function StartupsListContent() {
                       </div>
                     )}
                   </div>
-                  <div className="flex items-center text-orange-600 font-semibold text-sm mt-4">
+                  <div className="flex items-center text-orange-600 dark:text-orange-400 font-semibold text-sm mt-4">
                     View Details
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </div>
@@ -142,7 +166,7 @@ async function StartupsListContent() {
 export async function StartupsList() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-[96px]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-[150px] pb-[96px]">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">

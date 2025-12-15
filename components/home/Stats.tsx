@@ -53,13 +53,13 @@ export function Stats() {
   }, []);
 
   return (
-    <section className="py-32 bg-black text-white">
+    <section className="py-32 bg-black dark:bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Why Choose QuickLaunchr
           </h2>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto">
+          <p className="text-xl text-gray-300 dark:text-gray-400 max-w-2xl mx-auto">
             Built for startups and investors who value quality connections and meaningful partnerships
           </p>
         </div>
@@ -68,7 +68,7 @@ export function Stats() {
           {highlights.map((highlight, index) => (
             <div
               key={index}
-              className={`bg-gray-900 border border-gray-800 rounded-lg p-6 hover:border-orange-600 transition-all duration-300 ${
+              className={`bg-gray-900 dark:bg-gray-800 border border-gray-800 dark:border-gray-700 rounded-lg p-6 hover:border-orange-600 dark:hover:border-orange-500 transition-all duration-300 ${
                 mounted
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"
@@ -77,13 +77,13 @@ export function Stats() {
                 transitionDelay: `${index * 150}ms`,
               }}
             >
-              <div className="w-14 h-14 bg-orange-600/20 rounded-lg flex items-center justify-center mb-4 text-orange-600">
+              <div className="w-14 h-14 bg-orange-600/20 dark:bg-orange-500/20 rounded-lg flex items-center justify-center mb-4 text-orange-600 dark:text-orange-400">
                 {highlight.icon}
               </div>
               <h3 className="text-xl font-bold mb-3 text-white">
                 {highlight.title}
               </h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-gray-400 dark:text-gray-300 leading-relaxed">
                 {highlight.description}
               </p>
             </div>

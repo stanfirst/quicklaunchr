@@ -30,9 +30,9 @@ export function FounderForm({
   };
 
   return (
-    <div className="border border-gray-200 rounded-lg p-6 space-y-4 bg-gray-50">
+    <div className="border border-gray-200 dark:border-gray-700 rounded-lg p-6 space-y-4 bg-gray-50 dark:bg-gray-800">
       <div className="flex items-center justify-between mb-4">
-        <h4 className="font-semibold text-lg text-gray-800">
+        <h4 className="font-semibold text-lg text-gray-800 dark:text-white">
           Founder {index + 1}
         </h4>
         <Button
@@ -40,7 +40,7 @@ export function FounderForm({
           variant="ghost"
           size="sm"
           onClick={onRemove}
-          className="text-red-600 hover:text-red-700 hover:bg-red-50"
+          className="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:bg-red-50 dark:hover:bg-red-900/20"
         >
           <X className="w-4 h-4 mr-1" />
           Remove
@@ -49,7 +49,7 @@ export function FounderForm({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="space-y-2">
-          <Label htmlFor={`founder-name-${index}`} className="text-black font-medium">
+          <Label htmlFor={`founder-name-${index}`} className="text-black dark:text-white font-medium">
             Name <span className="text-red-500">*</span>
           </Label>
           <Input
@@ -57,12 +57,12 @@ export function FounderForm({
             value={founder.name || ""}
             onChange={(e) => handleChange("name", e.target.value)}
             placeholder="John Doe"
-            className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+            className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
           />
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor={`founder-email-${index}`} className="text-black font-medium">
+          <Label htmlFor={`founder-email-${index}`} className="text-black dark:text-white font-medium">
             Email <span className="text-red-500">*</span>
           </Label>
           <Input
@@ -71,12 +71,12 @@ export function FounderForm({
             value={founder.email || ""}
             onChange={(e) => handleChange("email", e.target.value)}
             placeholder="john@example.com"
-            className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+            className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
           />
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor={`founder-linkedin-${index}`} className="text-black font-medium">
+          <Label htmlFor={`founder-linkedin-${index}`} className="text-black dark:text-white font-medium">
             LinkedIn Profile
           </Label>
           <Input
@@ -84,12 +84,12 @@ export function FounderForm({
             value={founder.linkedin || ""}
             onChange={(e) => handleChange("linkedin", e.target.value)}
             placeholder="https://linkedin.com/in/johndoe"
-            className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+            className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
           />
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor={`founder-experience-${index}`} className="text-black font-medium">
+          <Label htmlFor={`founder-experience-${index}`} className="text-black dark:text-white font-medium">
             Years of Experience
           </Label>
           <Input
@@ -101,12 +101,12 @@ export function FounderForm({
               handleChange("years_of_experience", parseInt(e.target.value) || 0)
             }
             placeholder="5"
-            className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+            className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
           />
         </div>
 
         <div className="space-y-2 md:col-span-2">
-          <Label htmlFor={`founder-expertise-${index}`} className="text-black font-medium">
+          <Label htmlFor={`founder-expertise-${index}`} className="text-black dark:text-white font-medium">
             Field of Expertise <span className="text-red-500">*</span>
           </Label>
           <Input
@@ -114,14 +114,14 @@ export function FounderForm({
             value={founder.field_of_expertise || ""}
             onChange={(e) => handleChange("field_of_expertise", e.target.value)}
             placeholder="Software Engineering, Product Management, etc."
-            className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+            className="border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
           />
         </div>
       </div>
 
       {errors.length > 0 && (
-        <div className="bg-red-50 border border-red-200 rounded-lg p-3 mt-2">
-          <ul className="list-disc list-inside text-sm text-red-600">
+        <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3 mt-2">
+          <ul className="list-disc list-inside text-sm text-red-600 dark:text-red-400">
             {errors.map((error, i) => (
               <li key={i}>{error}</li>
             ))}

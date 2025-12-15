@@ -30,12 +30,12 @@ async function ProfileCheck() {
 
 export default function StartupProfilePage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 pt-20">
+    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 pt-20">
       <Suspense fallback={
         <div className="flex items-center justify-center min-h-[60vh]">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto"></div>
-            <p className="mt-4 text-gray-600">Loading profile...</p>
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 dark:border-orange-400 mx-auto"></div>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">Loading profile...</p>
           </div>
         </div>
       }>
