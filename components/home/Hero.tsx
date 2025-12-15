@@ -4,13 +4,28 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
+import Lottie from "lottie-react";
 
 export function Hero() {
   const [mounted, setMounted] = useState(false);
   const [startupLink, setStartupLink] = useState("/auth/sign-up");
+  const [animationData, setAnimationData] = useState<any>(null);
 
   useEffect(() => {
     setMounted(true);
+
+    // Load Lottie animation data
+    const loadAnimation = async () => {
+      try {
+        const response = await fetch('/lotties/Investment growth.json');
+        const data = await response.json();
+        setAnimationData(data);
+      } catch (error) {
+        console.error('Failed to load animation:', error);
+      }
+    };
+
+    loadAnimation();
 
     // Check user status and determine redirect
     const checkUserStatus = async () => {
@@ -118,13 +133,20 @@ export function Hero() {
             }`}
             style={{ transitionDelay: "200ms" }}
           >
-            <div className="relative w-full h-[500px] lg:h-[600px] flex items-center justify-center">
-              <iframe
-                src="https://lottie.host/embed/d8f0264e-bb04-475e-b713-9ce4a33ac5d4/uV09K1ppe4.lottie"
-                className="w-full h-full border-0"
-              
-                title="QuickLaunchr Animation"
-              />
+            <div className="relative w-full h-[500px] lg:h-[600px] flex items-center justify-center bg-transparent">
+              {animationData ? (
+                <Lottie
+                  animationData={animationData}
+                  loop={true}
+                  autoplay={true}
+                  className="w-full h-full"
+                  style={{ backgroundColor: 'transparent' }}
+                />
+              ) : (
+                <div className="w-full h-full flex items-center justify-center">
+                  <div className="w-16 h-16 border-4 border-orange-600 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+              )}
             </div>
           </div>
         </div>
