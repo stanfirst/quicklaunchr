@@ -14,14 +14,34 @@ export function Hero() {
   useEffect(() => {
     setMounted(true);
 
-    // Load Lottie animation data
+    // Load Lottie animation data from .lottie file
     const loadAnimation = async () => {
       try {
-        const response = await fetch('/lotties/Investment growth.json');
-        const data = await response.json();
+        // URL encode the filename to handle spaces
+        const lottiePath = encodeURI('/lotties/Investment_growth.lottie');
+        const response = await fetch(lottiePath);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        // .lottie files are typically JSON format, so parse as text first
+        const text = await response.text();
+        const data = JSON.parse(text);
         setAnimationData(data);
       } catch (error) {
-        console.error('Failed to load animation:', error);
+        console.error('Failed to load .lottie animation:', error);
+        // Fallback to JSON file
+        try {
+          const jsonPath = encodeURI('/lotties/Investment_growth.json');
+          const jsonResponse = await fetch(jsonPath);
+          if (jsonResponse.ok) {
+            const jsonData = await jsonResponse.json();
+            setAnimationData(jsonData);
+          }
+        } catch (jsonError) {
+          console.error('Failed to load JSON animation:', jsonError);
+        }
       }
     };
 
