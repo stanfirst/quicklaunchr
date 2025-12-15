@@ -4,7 +4,6 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export function Hero() {
   const [mounted, setMounted] = useState(false);
@@ -85,13 +84,11 @@ export function Hero() {
                 </Button>
               </Link>
               <Link href="#how-it-works">
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="border-2 border-black text-black hover:bg-black hover:text-white text-lg px-8 py-6 rounded-lg transition-all"
+                <button
+                  className="border-2 border-black text-black hover:bg-black hover:text-white text-lg px-8 py-6 rounded-lg transition-all h-10 flex items-center justify-center"
                 >
                   Learn More
-                </Button>
+                </button>
               </Link>
             </div>
 
@@ -120,11 +117,10 @@ export function Hero() {
             style={{ transitionDelay: "200ms" }}
           >
             <div className="relative w-full h-[500px] lg:h-[600px] flex items-center justify-center bg-transparent">
-              <DotLottieReact
-                src="/lotties/Investment_growth.json"
-                loop
-                autoplay
-                className="w-full h-full"
+              <iframe
+                src="https://lottie.host/embed/2979655f-c9ef-4904-bb47-432ed157bba5/dbnjEV3blu.json"
+                className="w-full h-full border-0 rounded-full"
+                title="Investment Growth Animation"
               />
             </div>
           </div>
