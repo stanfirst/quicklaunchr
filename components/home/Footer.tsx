@@ -31,7 +31,7 @@ export function Footer() {
     setCurrentYear(new Date().getFullYear());
   }, []);
   return (
-    <footer className="bg-black text-white py-16">
+    <footer className="bg-black dark:bg-gray-900 text-white py-16">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-12 mb-12">
           <div>
@@ -44,19 +44,19 @@ export function Footer() {
                 className="h-16 w-auto"
               />
             </Link>
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-400 dark:text-gray-500 text-sm">
               Connecting startups with visionary investors.
             </p>
           </div>
 
           <div>
             <h4 className="font-semibold mb-4">Product</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
+            <ul className="space-y-2 text-sm text-gray-400 dark:text-gray-500">
               {footerLinks.product.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="hover:text-orange-600 transition-colors"
+                    className="hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -67,12 +67,12 @@ export function Footer() {
 
           <div>
             <h4 className="font-semibold mb-4">Company</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
+            <ul className="space-y-2 text-sm text-gray-400 dark:text-gray-500">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="hover:text-orange-600 transition-colors"
+                    className="hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -83,12 +83,12 @@ export function Footer() {
 
           <div>
             <h4 className="font-semibold mb-4">Legal</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
+            <ul className="space-y-2 text-sm text-gray-400 dark:text-gray-500">
               {footerLinks.legal.map((link) => (
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="hover:text-orange-600 transition-colors"
+                    className="hover:text-orange-600 dark:hover:text-orange-400 transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -98,26 +98,26 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">
+        <div className="border-t border-gray-800 dark:border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-gray-400 dark:text-gray-500 text-sm">
             © {currentYear} QuickLaunchr. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <Link
               href="#"
-              className="text-gray-400 hover:text-orange-600 transition-colors text-sm"
+              className="text-gray-400 dark:text-gray-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors text-sm"
             >
               Twitter
             </Link>
             <Link
               href="#"
-              className="text-gray-400 hover:text-orange-600 transition-colors text-sm"
+              className="text-gray-400 dark:text-gray-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors text-sm"
             >
               LinkedIn
             </Link>
             <Link
               href="#"
-              className="text-gray-400 hover:text-orange-600 transition-colors text-sm"
+              className="text-gray-400 dark:text-gray-500 hover:text-orange-600 dark:hover:text-orange-400 transition-colors text-sm"
             >
               GitHub
             </Link>

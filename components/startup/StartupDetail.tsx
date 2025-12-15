@@ -67,19 +67,19 @@ async function StartupDetailContent({ id }: { id: string }) {
           {startup.name}
         </h1>
         <div className="flex items-center gap-4 flex-wrap">
-          <Badge variant="outline" className="text-orange-600 border-orange-600 px-3 py-1">
+          <Badge variant="outline" className="text-orange-600 dark:text-orange-400 border-orange-600 dark:border-orange-400 px-3 py-1">
             {BUSINESS_TYPE_LABELS[startup.business_type] || startup.business_type}
           </Badge>
-          <Badge variant="outline" className="text-gray-600 border-gray-600 px-3 py-1">
+          <Badge variant="outline" className="text-gray-600 dark:text-gray-400 border-gray-600 dark:border-gray-400 px-3 py-1">
             {BUSINESS_STAGE_LABELS[startup.stage] || startup.stage}
           </Badge>
           {startup.product_is_live ? (
-            <Badge className="bg-green-600 text-white px-3 py-1">
+            <Badge className="bg-green-600 dark:bg-green-500 text-white px-3 py-1">
               <CheckCircle2 className="w-3 h-3 mr-1" />
               Live
             </Badge>
           ) : (
-            <Badge variant="outline" className="text-gray-500 border-gray-500 px-3 py-1">
+            <Badge variant="outline" className="text-gray-500 dark:text-gray-400 border-gray-500 dark:border-gray-400 px-3 py-1">
               <XCircle className="w-3 h-3 mr-1" />
               Not Live
             </Badge>
@@ -91,10 +91,10 @@ async function StartupDetailContent({ id }: { id: string }) {
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-6">
           {/* Description */}
-          <Card className="border-2 border-gray-200 shadow-lg">
+          <Card className="border-2 border-gray-200 dark:border-gray-700 shadow-lg">
             <CardHeader>
               <CardTitle className="text-xl font-bold text-gray-900 dark:text-white flex items-center">
-                <FileText className="w-5 h-5 mr-2 text-orange-600" />
+                <FileText className="w-5 h-5 mr-2 text-orange-600 dark:text-orange-400" />
                 About
               </CardTitle>
             </CardHeader>
@@ -106,10 +106,10 @@ async function StartupDetailContent({ id }: { id: string }) {
           </Card>
 
           {/* Business Details */}
-          <Card className="border-2 border-gray-200 shadow-lg">
+          <Card className="border-2 border-gray-200 dark:border-gray-700 shadow-lg">
             <CardHeader>
               <CardTitle className="text-xl font-bold text-gray-900 dark:text-white flex items-center">
-                <TrendingUp className="w-5 h-5 mr-2 text-orange-600" />
+                <TrendingUp className="w-5 h-5 mr-2 text-orange-600 dark:text-orange-400" />
                 Business Metrics
               </CardTitle>
             </CardHeader>
@@ -135,7 +135,7 @@ async function StartupDetailContent({ id }: { id: string }) {
                 </div>
                 <div>
                   <p className="text-sm text-gray-600 dark:text-gray-400 mb-1">Ask Value</p>
-                  <p className="text-lg font-semibold text-orange-600">
+                  <p className="text-lg font-semibold text-orange-600 dark:text-orange-400">
                     {formatCurrency(startup.ask_value)}
                   </p>
                 </div>
@@ -145,10 +145,10 @@ async function StartupDetailContent({ id }: { id: string }) {
 
           {/* Founders */}
           {startup.founders && startup.founders.length > 0 && (
-            <Card className="border-2 border-gray-200 shadow-lg">
+            <Card className="border-2 border-gray-200 dark:border-gray-700 shadow-lg">
               <CardHeader>
                 <CardTitle className="text-xl font-bold text-gray-900 dark:text-white flex items-center">
-                  <Users className="w-5 h-5 mr-2 text-orange-600" />
+                  <Users className="w-5 h-5 mr-2 text-orange-600 dark:text-orange-400" />
                   Founders
                 </CardTitle>
               </CardHeader>
@@ -171,7 +171,7 @@ async function StartupDetailContent({ id }: { id: string }) {
                             href={founder.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-orange-600 hover:text-orange-700 text-sm font-medium"
+                            className="text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 text-sm font-medium"
                           >
                             LinkedIn →
                           </a>
@@ -202,10 +202,10 @@ async function StartupDetailContent({ id }: { id: string }) {
         {/* Sidebar */}
         <div className="space-y-6">
           {/* Company Information */}
-          <Card className="border-2 border-gray-200 shadow-lg">
+          <Card className="border-2 border-gray-200 dark:border-gray-700 shadow-lg">
             <CardHeader>
               <CardTitle className="text-xl font-bold text-gray-900 dark:text-white flex items-center">
-                <Building2 className="w-5 h-5 mr-2 text-orange-600" />
+                <Building2 className="w-5 h-5 mr-2 text-orange-600 dark:text-orange-400" />
                 Company Details
               </CardTitle>
             </CardHeader>
@@ -246,10 +246,10 @@ async function StartupDetailContent({ id }: { id: string }) {
           </Card>
 
           {/* Quick Stats */}
-          <Card className="border-2 border-gray-200 shadow-lg bg-gradient-to-br from-orange-50 to-white dark:from-orange-900/20 dark:to-gray-800">
+          <Card className="border-2 border-gray-200 dark:border-gray-700 shadow-lg bg-gradient-to-br from-orange-50 to-white dark:from-orange-900/20 dark:to-gray-800">
             <CardHeader>
               <CardTitle className="text-xl font-bold text-gray-900 dark:text-white flex items-center">
-                <Rocket className="w-5 h-5 mr-2 text-orange-600" />
+                <Rocket className="w-5 h-5 mr-2 text-orange-600 dark:text-orange-400" />
                 Quick Stats
               </CardTitle>
             </CardHeader>
@@ -305,7 +305,7 @@ export async function StartupDetail({ id }: { id: string }) {
         {/* Back Button */}
         <Link
           href="/startups"
-          className="inline-flex items-center text-orange-600 hover:text-orange-700 mb-6 font-medium"
+          className="inline-flex items-center text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 mb-6 font-medium"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back to Startups

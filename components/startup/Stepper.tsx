@@ -29,9 +29,9 @@ export function Stepper({ currentStep, totalSteps, stepLabels }: StepperProps) {
                     isCompleted &&
                       "bg-orange-600 border-orange-600 text-white",
                     isCurrent &&
-                      "bg-orange-600 border-orange-600 text-white ring-4 ring-orange-100",
+                      "bg-orange-600 dark:bg-orange-500 border-orange-600 dark:border-orange-500 text-white ring-4 ring-orange-100 dark:ring-orange-900/50",
                     isPending &&
-                      "bg-white border-gray-300 text-gray-400"
+                      "bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-600 text-gray-400 dark:text-gray-500"
                   )}
                 >
                   {isCompleted ? (
@@ -44,9 +44,9 @@ export function Stepper({ currentStep, totalSteps, stepLabels }: StepperProps) {
                   <p
                     className={cn(
                       "text-sm font-medium",
-                      isCurrent && "text-orange-600",
-                      isCompleted && "text-gray-600",
-                      isPending && "text-gray-400"
+                      isCurrent && "text-orange-600 dark:text-orange-400",
+                      isCompleted && "text-gray-600 dark:text-gray-400",
+                      isPending && "text-gray-400 dark:text-gray-500"
                     )}
                   >
                     {label}
@@ -59,7 +59,7 @@ export function Stepper({ currentStep, totalSteps, stepLabels }: StepperProps) {
                 <div
                   className={cn(
                     "h-0.5 flex-1 mx-2 transition-colors",
-                    isCompleted ? "bg-orange-600" : "bg-gray-300"
+                    isCompleted ? "bg-orange-600 dark:bg-orange-500" : "bg-gray-300 dark:bg-gray-600"
                   )}
                 />
               )}

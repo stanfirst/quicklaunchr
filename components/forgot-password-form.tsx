@@ -47,16 +47,16 @@ export function ForgotPasswordForm({
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       {success ? (
-        <Card className="border-2 border-gray-200 shadow-xl">
+        <Card className="border-2 border-gray-200 dark:border-gray-700 shadow-xl">
           <CardHeader className="space-y-2">
-            <CardTitle className="text-3xl font-bold text-black">Check Your Email</CardTitle>
-            <CardDescription className="text-gray-600">
+            <CardTitle className="text-3xl font-bold text-black dark:text-white">Check Your Email</CardTitle>
+            <CardDescription className="text-gray-600 dark:text-gray-400">
               Password reset instructions sent
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-              <p className="text-sm text-green-700">
+            <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg p-4">
+              <p className="text-sm text-green-700 dark:text-green-400">
                 If you registered using your email and password, you will receive
                 a password reset email.
               </p>
@@ -64,10 +64,10 @@ export function ForgotPasswordForm({
           </CardContent>
         </Card>
       ) : (
-        <Card className="border-2 border-gray-200 shadow-xl">
+        <Card className="border-2 border-gray-200 dark:border-gray-700 shadow-xl">
           <CardHeader className="space-y-2">
-            <CardTitle className="text-3xl font-bold text-black">Reset Password</CardTitle>
-            <CardDescription className="text-gray-600">
+            <CardTitle className="text-3xl font-bold text-black dark:text-white">Reset Password</CardTitle>
+            <CardDescription className="text-gray-600 dark:text-gray-400">
               Enter your email address and we will send you a link to reset your password
             </CardDescription>
           </CardHeader>
@@ -75,7 +75,7 @@ export function ForgotPasswordForm({
             <form onSubmit={handleResetPassword}>
               <div className="flex flex-col gap-6">
                 <div className="grid gap-2">
-                  <Label htmlFor="email" className="text-black font-medium">Email</Label>
+                  <Label htmlFor="email" className="text-black dark:text-white font-medium">Email</Label>
                   <Input
                     id="email"
                     type="email"
@@ -83,27 +83,27 @@ export function ForgotPasswordForm({
                     required
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="border-gray-300 focus:border-orange-600 focus:ring-orange-600"
+                    className="border-gray-300 dark:border-gray-600 dark:bg-gray-800 dark:text-white focus:border-orange-600 dark:focus:border-orange-500 focus:ring-orange-600 dark:focus:ring-orange-500"
                   />
                 </div>
                 {error && (
-                  <div className="bg-red-50 border border-red-200 rounded-lg p-3">
-                    <p className="text-sm text-red-600">{error}</p>
+                  <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-3">
+                    <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
                   </div>
                 )}
                 <Button 
                   type="submit" 
-                  className="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-6 text-lg shadow-lg hover:shadow-xl transition-all" 
+                  className="w-full bg-orange-600 hover:bg-orange-700 dark:bg-orange-600 dark:hover:bg-orange-700 text-white font-semibold py-6 text-lg shadow-lg hover:shadow-xl transition-all" 
                   disabled={isLoading}
                 >
                   {isLoading ? "Sending..." : "Send Reset Link"}
                 </Button>
               </div>
-              <div className="mt-6 text-center text-sm text-gray-600">
+              <div className="mt-6 text-center text-sm text-gray-600 dark:text-gray-400">
                 Remember your password?{" "}
                 <Link
                   href="/auth/login"
-                  className="text-orange-600 hover:text-orange-700 font-medium underline underline-offset-4"
+                  className="text-orange-600 dark:text-orange-400 hover:text-orange-700 dark:hover:text-orange-300 font-medium underline underline-offset-4"
                 >
                   Sign in
                 </Link>

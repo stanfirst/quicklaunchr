@@ -80,7 +80,7 @@ export function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/95 backdrop-blur-sm shadow-sm border-b border-gray-100"
+          ? "bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-sm border-b border-gray-100 dark:border-gray-800"
           : "bg-transparent"
       }`}
     >
@@ -92,7 +92,15 @@ export function Header() {
               alt="QuickLaunchr Logo"
               width={200}
               height={67}
-              className="h-14 w-auto"
+              className="h-14 w-auto dark:hidden"
+              priority
+            />
+            <Image
+              src="/images/white_quicklaunchr_logo.png"
+              alt="QuickLaunchr Logo"
+              width={200}
+              height={67}
+              className="h-14 w-auto hidden dark:block"
               priority
             />
           </Link>
@@ -100,25 +108,25 @@ export function Header() {
           <div className="hidden md:flex items-center space-x-8">
             <Link
               href="#how-it-works"
-              className="text-gray-700 hover:text-orange-600 transition-colors font-medium"
+              className="text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-medium"
             >
               How It Works
             </Link>
             <Link
-              href="#for-startups"
-              className="text-gray-700 hover:text-orange-600 transition-colors font-medium"
+              href="/startups"
+              className="text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-medium"
             >
-              For Startups
+              Startups
             </Link>
             <Link
               href="#for-investors"
-              className="text-gray-700 hover:text-orange-600 transition-colors font-medium"
+              className="text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-medium"
             >
-              For Investors
+              Investors
             </Link>
             <Link
               href="#features"
-              className="text-gray-700 hover:text-orange-600 transition-colors font-medium"
+              className="text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 transition-colors font-medium"
             >
               Features
             </Link>
@@ -167,7 +175,7 @@ export function Header() {
                   <DropdownMenuSeparator />
                   <DropdownMenuItem
                     onClick={handleLogout}
-                    className="cursor-pointer text-red-600 focus:text-red-600"
+                    className="cursor-pointer text-red-600 dark:text-red-400 focus:text-red-600 dark:focus:text-red-400"
                   >
                     Logout
                   </DropdownMenuItem>
@@ -178,13 +186,13 @@ export function Header() {
                 <Link href="/auth/login">
                   <Button
                     variant="ghost"
-                    className="text-gray-700 hover:text-orange-600 hidden sm:flex"
+                    className="text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400 hidden sm:flex"
                   >
                     Sign In
                   </Button>
                 </Link>
                 <Link href="/auth/sign-up">
-                  <Button className="bg-orange-600 hover:bg-orange-700 text-white">
+                  <Button className="bg-orange-600 dark:bg-orange-500 hover:bg-orange-700 dark:hover:bg-orange-600 text-white">
                     Get Started
                   </Button>
                 </Link>
