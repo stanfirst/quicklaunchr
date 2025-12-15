@@ -4,48 +4,14 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
-import Lottie from "lottie-react";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export function Hero() {
   const [mounted, setMounted] = useState(false);
   const [startupLink, setStartupLink] = useState("/auth/sign-up");
-  const [animationData, setAnimationData] = useState<any>(null);
 
   useEffect(() => {
     setMounted(true);
-
-    // Load Lottie animation data from .lottie file
-    const loadAnimation = async () => {
-      try {
-        // URL encode the filename to handle spaces
-        const lottiePath = encodeURI('/lotties/Investment_growth.lottie');
-        const response = await fetch(lottiePath);
-        
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        
-        // .lottie files are typically JSON format, so parse as text first
-        const text = await response.text();
-        const data = JSON.parse(text);
-        setAnimationData(data);
-      } catch (error) {
-        console.error('Failed to load .lottie animation:', error);
-        // Fallback to JSON file
-        try {
-          const jsonPath = encodeURI('/lotties/Investment_growth.json');
-          const jsonResponse = await fetch(jsonPath);
-          if (jsonResponse.ok) {
-            const jsonData = await jsonResponse.json();
-            setAnimationData(jsonData);
-          }
-        } catch (jsonError) {
-          console.error('Failed to load JSON animation:', jsonError);
-        }
-      }
-    };
-
-    loadAnimation();
 
     // Check user status and determine redirect
     const checkUserStatus = async () => {
@@ -154,19 +120,12 @@ export function Hero() {
             style={{ transitionDelay: "200ms" }}
           >
             <div className="relative w-full h-[500px] lg:h-[600px] flex items-center justify-center bg-transparent">
-              {animationData ? (
-                <Lottie
-                  animationData={animationData}
-                  loop={true}
-                  autoplay={true}
-                  className="w-full h-full"
-                  style={{ backgroundColor: 'transparent' }}
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center">
-                  <div className="w-16 h-16 border-4 border-orange-600 border-t-transparent rounded-full animate-spin"></div>
-                </div>
-              )}
+              <DotLottieReact
+                src="/lotties/Investment_growth.json"
+                loop
+                autoplay
+                className="w-full h-full"
+              />
             </div>
           </div>
         </div>
