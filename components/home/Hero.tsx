@@ -117,10 +117,10 @@ export function Hero() {
             style={{ transitionDelay: "200ms" }}
           >
             <div className="relative w-full h-[500px] lg:h-[600px] flex items-center justify-center bg-transparent">
-              <iframe
-                src="https://lottie.host/embed/2979655f-c9ef-4904-bb47-432ed157bba5/dbnjEV3blu.json"
-                className="w-full h-full border-0 rounded-full"
-                title="Investment Growth Animation"
+              <img
+                src="/gifs/Investment_growth.gif"
+                alt="Investment Growth Animation"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>
